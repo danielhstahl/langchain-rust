@@ -5,16 +5,14 @@ use crate::{
 use async_trait::async_trait;
 use futures::Stream;
 use ollama_rs::generation::images::Image;
+use ollama_rs::models::ModelOptions;
 pub use ollama_rs::{
     error::OllamaError,
-    generation::{
-        chat::{request::ChatMessageRequest, ChatMessage, MessageRole},
-    },
+    generation::chat::{request::ChatMessageRequest, ChatMessage, MessageRole},
     Ollama as OllamaClient,
 };
 use std::pin::Pin;
 use std::sync::Arc;
-use ollama_rs::models::ModelOptions;
 use tokio_stream::StreamExt;
 
 #[derive(Debug, Clone)]
@@ -54,7 +52,7 @@ impl Ollama {
         let mapped_messages = messages.iter().map(|message| message.into()).collect();
         let mut request = ChatMessageRequest::new(self.model.clone(), mapped_messages);
         if let Some(option) = &self.options {
-           request = request.options(option.clone()) 
+            request = request.options(option.clone())
         }
         request
     }

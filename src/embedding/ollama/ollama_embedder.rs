@@ -2,13 +2,11 @@ use std::sync::Arc;
 
 use crate::embedding::{embedder_trait::Embedder, EmbedderError};
 use async_trait::async_trait;
+use ollama_rs::models::ModelOptions;
 use ollama_rs::{
-    generation::{
-        embeddings::request::{EmbeddingsInput, GenerateEmbeddingsRequest},
-    },
+    generation::embeddings::request::{EmbeddingsInput, GenerateEmbeddingsRequest},
     Ollama as OllamaClient,
 };
-use ollama_rs::models::ModelOptions;
 
 #[derive(Debug)]
 pub struct OllamaEmbedder {
