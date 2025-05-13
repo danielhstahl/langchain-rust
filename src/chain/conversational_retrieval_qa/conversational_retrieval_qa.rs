@@ -123,7 +123,9 @@ impl Chain for ConversationalRetrieverChain {
         {
             let mut memory = self.memory.lock().await;
             memory.add_message(human_message).await;
-            memory.add_message(Message::new_ai_message(&output.generation)).await;
+            memory
+                .add_message(Message::new_ai_message(&output.generation))
+                .await;
         }
 
         let mut result = HashMap::new();

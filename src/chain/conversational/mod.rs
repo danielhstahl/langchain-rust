@@ -75,7 +75,9 @@ impl Chain for ConversationalChain {
 
         let mut memory = self.memory.lock().await;
         memory.add_message(human_message).await;
-        memory.add_message(Message::new_ai_message(&result.generation)).await;
+        memory
+            .add_message(Message::new_ai_message(&result.generation))
+            .await;
         Ok(result)
     }
 

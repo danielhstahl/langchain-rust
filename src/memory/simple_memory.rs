@@ -34,11 +34,11 @@ impl BaseMemory for SimpleMemory {
     async fn messages(&self) -> Vec<Message> {
         self.messages.clone()
     }
-    
+
     async fn add_message(&mut self, message: Message) {
         self.messages.push(message);
     }
-    
+
     async fn clear(&mut self) {
         self.messages.clear();
     }

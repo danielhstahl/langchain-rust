@@ -34,18 +34,18 @@ pub trait BaseMemory: Send + Sync {
 pub trait BaseMemoryExt: BaseMemory {
     // Add a user message from any type that implements Display and is Send
     fn add_user_message_display<'a, T: std::fmt::Display + Send + 'a>(
-        &'a mut self, 
-        message: T
+        &'a mut self,
+        message: T,
     ) -> impl Future<Output = ()> + Send + 'a {
         async move {
             self.add_user_message(message.to_string()).await;
         }
     }
-    
+
     // Add an AI message from any type that implements Display and is Send
     fn add_ai_message_display<'a, T: std::fmt::Display + Send + 'a>(
-        &'a mut self, 
-        message: T
+        &'a mut self,
+        message: T,
     ) -> impl Future<Output = ()> + Send + 'a {
         async move {
             self.add_ai_message(message.to_string()).await;

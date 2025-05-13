@@ -42,14 +42,14 @@ impl BaseMemory for WindowBufferMemory {
     async fn messages(&self) -> Vec<Message> {
         self.messages.clone()
     }
-    
+
     async fn add_message(&mut self, message: Message) {
         if self.messages.len() >= self.window_size {
             self.messages.remove(0);
         }
         self.messages.push(message);
     }
-    
+
     async fn clear(&mut self) {
         self.messages.clear();
     }
