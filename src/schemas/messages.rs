@@ -23,6 +23,18 @@ pub enum MessageType {
     ToolMessage,
 }
 
+impl From<&str> for MessageType {
+    fn from(message_type: &str) -> Self {
+        match message_type {
+            "system" => MessageType::SystemMessage,
+            "ai" => MessageType::AIMessage,
+            "human" => MessageType::HumanMessage,
+            "tool" => MessageType::ToolMessage,
+            _ => MessageType::default(),
+        }
+    }
+}
+
 impl Default for MessageType {
     fn default() -> Self {
         Self::SystemMessage
